@@ -65,5 +65,17 @@
       });
     });
   </script>
+  <script>
+  function sendHeightToParent() {
+    var iframeHeight = document.body.scrollHeight;
+    parent.postMessage({ iframeHeight: iframeHeight }, '*');
+  }
+
+  // Envoyer la hauteur initiale au chargement de l'iframe
+  window.addEventListener('load', sendHeightToParent);
+
+  // Réajuster la hauteur en cas de redimensionnement du contenu de l'iframe
+  window.addEventListener('resize', sendHeightToParent);
+</script>
 </body>
 </html>
